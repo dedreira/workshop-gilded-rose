@@ -1,4 +1,4 @@
-using GildedRose;
+using GildedRose.Model;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -8,7 +8,7 @@ namespace TestProject1
 {
     public class UnitTest1
     {
-        private IList<Item> Items;
+        private IList<IItem> Items;
         public UnitTest1()
         {
             SetupData();
@@ -16,32 +16,32 @@ namespace TestProject1
 
         private void SetupData()
         {
-            Items = new List<Item>{
-                new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
-                new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
-                new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
-                new Item
+            Items = new List<IItem>{
+                new ItemNormal {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
+                new ItemAgedBrie {Name = "Aged Brie", SellIn = 2, Quality = 0},
+                new ItemNormal {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
+                new ItemSulfuras {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
+                new ItemSulfuras {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
+                new ItemBackStagePass
                 {
                     Name = "Backstage passes to a TAFKAL80ETC concert",
                     SellIn = 15,
                     Quality = 20
                 },
-                new Item
+                new ItemBackStagePass
                 {
                     Name = "Backstage passes to a TAFKAL80ETC concert",
                     SellIn = 10,
                     Quality = 49
                 },
-                new Item
+                new ItemBackStagePass
                 {
                     Name = "Backstage passes to a TAFKAL80ETC concert",
                     SellIn = 5,
                     Quality = 49
                 },
 				// this conjured item does not work properly yet
-				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+				new ItemNormal {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
             };
         }
 
@@ -51,16 +51,16 @@ namespace TestProject1
             // Arrange
             const int totalDays = 31;
 
-            var items = new List<Item>{
-                new Item {Name = "Test1", SellIn = 15, Quality = 50},
-                new Item {Name = "Test2", SellIn = 20, Quality = 50},
-                new Item {Name = "Test3", SellIn = 25, Quality = 50},
-                new Item {Name = "Test4", SellIn = 0, Quality = 50},
-                new Item {Name = "Test10", SellIn = 100, Quality = 50},
-                new Item {Name = "Test20", SellIn = 50, Quality = 32},
-                new Item {Name = "Test30", SellIn = 50, Quality = 33},
-                new Item {Name = "Test40", SellIn = 80, Quality = 50},
-                new Item {Name = "Test50", SellIn = 50, Quality = 50},
+            var items = new List<IItem>{
+                new ItemNormal {Name = "Test1", SellIn = 15, Quality = 50},
+                new ItemNormal {Name = "Test2", SellIn = 20, Quality = 50},
+                new ItemNormal {Name = "Test3", SellIn = 25, Quality = 50},
+                new ItemNormal {Name = "Test4", SellIn = 0, Quality = 50},
+                new ItemNormal {Name = "Test10", SellIn = 100, Quality = 50},
+                new ItemNormal {Name = "Test20", SellIn = 50, Quality = 32},
+                new ItemNormal {Name = "Test30", SellIn = 50, Quality = 33},
+                new ItemNormal {Name = "Test40", SellIn = 80, Quality = 50},
+                new ItemNormal {Name = "Test50", SellIn = 50, Quality = 50},
             };
 
             var itemsExpextedValues = items.Select(c => new 
