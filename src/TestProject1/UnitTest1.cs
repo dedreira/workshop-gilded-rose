@@ -202,6 +202,36 @@ namespace TestProject1
             app.Start(totalDays);
 
             // Assert
+            AssertData(itemsExpextedValues);
+        }
+
+        [Fact]
+        //REQ: si faltan 10 d�as o menos para el concierto, la calidad se incrementa en 2 unidades
+        public void GivenListOfItemConjured_When_ThenQualityDegradesTwiceAsFast()
+        {
+            // Arrange
+            const int totalDays = 31;
+
+            var items = new List<IItem>{
+                new ItemConjured {Name = "Test1", SellIn = totalDays, Quality = 50},
+                new ItemConjured {Name = "Test2", SellIn = 20, Quality = 5},
+                new ItemConjured {Name = "Test3", SellIn = 10, Quality = 10},
+                new ItemConjured {Name = "Test4", SellIn = 0, Quality = 15},
+                new ItemConjured {Name = "Test5", SellIn = -10, Quality = 20},
+            };
+
+            List<ExpectedItem> itemsExpextedValues = GetExpectedValues(totalDays, items);
+            var app = new GildedRose.GildedRose(items);
+
+            // Act
+            app.Start(totalDays);
+
+            // Assert
+            AssertData(itemsExpextedValues);
+        }
+
+        private static void AssertData(List<ExpectedItem> itemsExpextedValues)
+        {
             //NOTE: use this query to check next Assert values in Watch window or QuickWatch window:
             itemsExpextedValues.Select(c => new { c.OriginalItem.Name, c.OriginalItem.SellIn, c.ExpectedSellIn, c.OriginalItem.Quality, c.ExpectedQuality });
 
