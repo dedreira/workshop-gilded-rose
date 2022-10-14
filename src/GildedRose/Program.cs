@@ -39,7 +39,7 @@ namespace GildedRose
             };
 
             var app = new GildedRose(items);
-            app.Start(items, 31);
+            app.Start(31);
         }
     }
 }

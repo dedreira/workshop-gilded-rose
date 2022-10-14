@@ -13,17 +13,14 @@ namespace GildedRose
             this.Items = Items;
         }
 
-        public void UpdateQuality()
+        private void UpdateQuality()
         {
             foreach (var item in Items)
                 item.UpdateQuality();
         }
 
-        public void Start(IList<IItem> Items, int NumberOfDays)
+        public void Start(int NumberOfDays)
         {
-            var app = new GildedRose(Items);
-
-
             for (var i = 0; i < NumberOfDays; i++)
             {
                 Console.WriteLine("-------- day " + i + " --------");
@@ -33,7 +30,7 @@ namespace GildedRose
                     System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
                 }
                 Console.WriteLine("");
-                app.UpdateQuality();
+                UpdateQuality();
             }
         }
 

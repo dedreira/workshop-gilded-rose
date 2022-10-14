@@ -10,5 +10,8 @@ namespace GildedRose.Model
         public int SellIn { get; set; }
         public int Quality { get; set; }
         public abstract void UpdateQuality();
+        public bool IsValidQuality(int quality);
+        public int GetMaximumQualityAllowed();
+        public int GetMinimumQualityAllowed();
     }
 }
