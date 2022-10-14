@@ -13,7 +13,7 @@ namespace TestProject1
         [Fact]
         //REQ: Una vez que ha pasado la fecha recomendada de venta, la calidad se degrada al doble de velocidad
         //REQ: La calidad de un artículo nunca es negativa
-        public void GivenListOfItems_WhenSellByDateHasPassed_ThenQualityDegradesTwiceAsFast()
+        public void GivenListOfNormalItems_WhenSellByDateHasPassed_ThenQualityDegradesTwiceAsFast()
         {
             // Arrange
             const int totalDays = 31;
@@ -37,17 +37,12 @@ namespace TestProject1
             app.Start(totalDays);
 
             // Assert
-            //NOTE: use this query to check next Assert values in Watch window or QuickWatch window:
-            itemsExpextedValues.Select(c => new { c.OriginalItem.Name, c.OriginalItem.SellIn, c.ExpectedSellIn, c.OriginalItem.Quality, c.ExpectedQuality });
-
-            Assert.Equal(
-                itemsExpextedValues.Count(c => c.OriginalItem.SellIn == c.ExpectedSellIn && c.OriginalItem.Quality == c.ExpectedQuality),
-                itemsExpextedValues.Count);
+            AssertData(itemsExpextedValues);
         }
 
         [Fact] 
         //REQ: Al final de cada día, nuestro sistema decrementa ambos valores para cada artículo
-        public void GivenListOfNormalItems_WhenSellByDateIsHigherThan0_ThenQualityDegrades()
+        public void GivenListOfItems_WhenSellByDateIsHigherThan0_ThenQualityDegradesOrIncreases()
         {
             // Arrange
             const int totalDays = 31;
@@ -59,6 +54,34 @@ namespace TestProject1
                 new ItemNormal {Name = "Test4", SellIn = totalDays, Quality = 20},
                 new ItemNormal {Name = "Test5", SellIn = totalDays, Quality = 10},
                 new ItemNormal {Name = "Test6", SellIn = totalDays, Quality = 0},
+
+                new ItemAgedBrie {Name = "Test1_ItemAgedBrie", SellIn = totalDays, Quality = 50},
+                new ItemAgedBrie {Name = "Test2_ItemAgedBrie", SellIn = totalDays, Quality = 40},
+                new ItemAgedBrie {Name = "Test3_ItemAgedBrie", SellIn = totalDays, Quality = 30},
+                new ItemAgedBrie {Name = "Test4_ItemAgedBrie", SellIn = totalDays, Quality = 20},
+                new ItemAgedBrie {Name = "Test5_ItemAgedBrie", SellIn = totalDays, Quality = 10},
+                new ItemAgedBrie {Name = "Test6_ItemAgedBrie", SellIn = totalDays, Quality = 0},
+
+                new ItemBackStagePass {Name = "Test1_ItemBackStagePass", SellIn = totalDays, Quality = 50},
+                new ItemBackStagePass {Name = "Test2_ItemBackStagePass", SellIn = totalDays, Quality = 40},
+                new ItemBackStagePass {Name = "Test3_ItemBackStagePass", SellIn = totalDays, Quality = 30},
+                new ItemBackStagePass {Name = "Test4_ItemBackStagePass", SellIn = totalDays, Quality = 20},
+                new ItemBackStagePass {Name = "Test5_ItemBackStagePass", SellIn = totalDays, Quality = 10},
+                new ItemBackStagePass {Name = "Test6_ItemBackStagePass", SellIn = totalDays, Quality = 0},
+
+                new ItemConjured {Name = "Test1_ItemConjured", SellIn = totalDays, Quality = 50},
+                new ItemConjured {Name = "Test2_ItemConjured", SellIn = totalDays, Quality = 40},
+                new ItemConjured {Name = "Test3_ItemConjured", SellIn = totalDays, Quality = 30},
+                new ItemConjured {Name = "Test4_ItemConjured", SellIn = totalDays, Quality = 20},
+                new ItemConjured {Name = "Test5_ItemConjured", SellIn = totalDays, Quality = 10},
+                new ItemConjured {Name = "Test6_ItemConjured", SellIn = totalDays, Quality = 0},
+
+                new ItemSulfuras {Name = "Test1_ItemSulfuras", SellIn = totalDays, Quality = 50},
+                new ItemSulfuras {Name = "Test2_ItemSulfuras", SellIn = totalDays, Quality = 40},
+                new ItemSulfuras {Name = "Test3_ItemSulfuras", SellIn = totalDays, Quality = 30},
+                new ItemSulfuras {Name = "Test4_ItemSulfuras", SellIn = totalDays, Quality = 20},
+                new ItemSulfuras {Name = "Test5_ItemSulfuras", SellIn = totalDays, Quality = 10},
+                new ItemSulfuras {Name = "Test6_ItemSulfuras", SellIn = totalDays, Quality = 0},
             };
 
             List<ExpectedItem> itemsExpextedValues = GetExpectedValues(totalDays, items);
@@ -68,12 +91,7 @@ namespace TestProject1
             app.Start(totalDays);
 
             // Assert
-            //NOTE: use this query to check next Assert values in Watch window or QuickWatch window:
-            itemsExpextedValues.Select(c => new { c.OriginalItem.Name, c.OriginalItem.SellIn, c.ExpectedSellIn, c.OriginalItem.Quality, c.ExpectedQuality });
-
-            Assert.Equal(
-                itemsExpextedValues.Count(c => c.OriginalItem.SellIn == c.ExpectedSellIn && c.OriginalItem.Quality == c.ExpectedQuality),
-                itemsExpextedValues.Count);
+            AssertData(itemsExpextedValues);
         }
 
         [Fact]
@@ -102,12 +120,7 @@ namespace TestProject1
             app.Start(totalDays);
 
             // Assert
-            //NOTE: use this query to check next Assert values in Watch window or QuickWatch window:
-            itemsExpextedValues.Select(c => new { c.OriginalItem.Name, c.OriginalItem.SellIn, c.ExpectedSellIn, c.OriginalItem.Quality, c.ExpectedQuality });
-
-            Assert.Equal(
-                itemsExpextedValues.Count(c => c.OriginalItem.SellIn == c.ExpectedSellIn && c.OriginalItem.Quality == c.ExpectedQuality),
-                itemsExpextedValues.Count);
+            AssertData(itemsExpextedValues);
         }
 
         [Fact]
@@ -137,19 +150,14 @@ namespace TestProject1
             app.Start(totalDays);
 
             // Assert
-            //NOTE: use this query to check next Assert values in Watch window or QuickWatch window:
-            itemsExpextedValues.Select(c => new { c.OriginalItem.Name, c.OriginalItem.SellIn, c.ExpectedSellIn, c.OriginalItem.Quality, c.ExpectedQuality });
-
-            Assert.Equal(
-                itemsExpextedValues.Count(c => c.OriginalItem.SellIn == c.ExpectedSellIn && c.OriginalItem.Quality == c.ExpectedQuality),
-                itemsExpextedValues.Count);
+            AssertData(itemsExpextedValues);
         }
 
         [Fact]
         //REQ: La calidad de un artículo nunca es mayor a 50
         //REQ: La calidad de un artículo nunca es negativa
         //REQ: Sulfuras siendo un artículo legendario posee una calidad inmutable de 80
-        public void GivenListOfNormalItems_WhenInvalidQualityIsAssigned_ThenQualityGetDefaultValue()
+        public void GivenListOfItems_WhenInvalidQualityIsAssigned_ThenQualityGetDefaultValue()
         {
             // Arrange
             const int totalDays = 31;
@@ -163,6 +171,8 @@ namespace TestProject1
                 new ItemBackStagePass {Name = "Test6", SellIn = totalDays, Quality = 60},
                 new ItemSulfuras {Name = "Test7", SellIn = totalDays, Quality = -10},
                 new ItemSulfuras {Name = "Test8", SellIn = totalDays, Quality = 90},
+                new ItemConjured {Name = "Test7", SellIn = totalDays, Quality = -10},
+                new ItemConjured {Name = "Test8", SellIn = totalDays, Quality = 90},
             };
 
             List<ExpectedItem> itemsExpextedValues = GetExpectedValues(totalDays, items);
@@ -172,12 +182,7 @@ namespace TestProject1
             app.Start(totalDays);
 
             // Assert
-            //NOTE: use this query to check next Assert values in Watch window or QuickWatch window:
-            itemsExpextedValues.Select(c => new { c.OriginalItem.Name, c.OriginalItem.SellIn, c.ExpectedSellIn, c.OriginalItem.Quality, c.ExpectedQuality });
-
-            Assert.Equal(
-                itemsExpextedValues.Count(c => c.OriginalItem.SellIn == c.ExpectedSellIn && c.OriginalItem.Quality == c.ExpectedQuality),
-                itemsExpextedValues.Count);
+            AssertData(itemsExpextedValues);
         }
 
         [Fact]
@@ -206,7 +211,7 @@ namespace TestProject1
         }
 
         [Fact]
-        //REQ: si faltan 10 dï¿½as o menos para el concierto, la calidad se incrementa en 2 unidades
+        //REQ: si faltan 10 días o menos para el concierto, la calidad se incrementa en 2 unidades
         public void GivenListOfItemConjured_When_ThenQualityDegradesTwiceAsFast()
         {
             // Arrange
@@ -304,7 +309,7 @@ namespace TestProject1
                     result = (DaysLeft5 * 3) + ((DaysLeft10 - DaysLeft5) * 2) + totalDays - DaysLeft10;
 
                 if (!c.IsValidQuality(result + validQuality))
-                    result = validQuality;
+                    result = c.GetMaximumQualityAllowed();
 
             }
             else if (c.GetType() == typeof(ItemSulfuras))
@@ -320,7 +325,13 @@ namespace TestProject1
                 else
                     result = Math.Abs(totalDays - c.SellIn) - Math.Abs(validQuality - c.SellIn);
 
-            } else
+            }
+            else if (c.GetType() == typeof(ItemConjured))
+            {
+                //REQ: Los artículos conjurados degradan su calidad al doble de velocidad que los normales
+                result = validQuality + (totalDays * 2);
+            }
+            else
                 throw new NotImplementedException();
 
             return c.IsValidQuality(result) ? result : 0;

@@ -23,10 +23,7 @@ namespace GildedRose.Model
 
         public virtual void UpdateQuality()
         {
-            //REQ: La calidad de un artículo nunca es mayor a 50
-            //REQ: La calidad de un artículo nunca es negativa
-            if (!IsValidQuality(Quality))
-                Quality = Quality < 0 ? MinimumQualityAllowed : MaximumQualityAllowed; //set default value
+            CheckQuality();
 
             int newQuality;
 
@@ -44,8 +41,17 @@ namespace GildedRose.Model
                 //NOTE: (see derived class constructors for NormalDecreaseBy setup)
                 newQuality = Quality + OverdueDecreaseBy;
 
-            if (IsValidQuality(newQuality))
-                Quality = newQuality;
+            Quality = newQuality;
+
+            CheckQuality();
+        }
+
+        private void CheckQuality()
+        {
+            //REQ: La calidad de un artículo nunca es mayor a 50
+            //REQ: La calidad de un artículo nunca es negativa
+            if (!IsValidQuality(Quality))
+                Quality = Quality < 0 ? MinimumQualityAllowed : MaximumQualityAllowed; //set default value
         }
 
         public bool IsValidQuality(int quality)
