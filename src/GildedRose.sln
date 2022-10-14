@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GildedRose", "GildedRose.csproj", "{FFD90A67-D702-4A1F-BACD-2760464532F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GildedRose", "GildedRose\GildedRose.csproj", "{FFD90A67-D702-4A1F-BACD-2760464532F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "..\TestProject1\TestProject1.csproj", "{C06C1A97-28DD-4183-8D93-3804B0F0B1E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{C06C1A97-28DD-4183-8D93-3804B0F0B1E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Model", "..\GildedRose.Model\GildedRose.Model.csproj", "{CE87045C-3C02-4A9C-A1AB-A9EBF740750C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GildedRose.Model", "GildedRose.Model\GildedRose.Model.csproj", "{CE87045C-3C02-4A9C-A1AB-A9EBF740750C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.Business", "..\GildedRose.Business\GildedRose.Business.csproj", "{E414B4E1-A3E5-4D60-8E53-792CAEF99B28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GildedRose.Business", "GildedRose.Business\GildedRose.Business.csproj", "{E414B4E1-A3E5-4D60-8E53-792CAEF99B28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

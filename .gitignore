@@ -8,3 +8,7 @@ src/GildedRose.Business/bin/
 src/GildedRose.Business/obj/
 src/GildedRose.Model/bin/
 src/GildedRose.Model/obj/
+src/tools/
+src/TestProject1/TestResults/
+src/CoverageReport/
+src/.vs/
