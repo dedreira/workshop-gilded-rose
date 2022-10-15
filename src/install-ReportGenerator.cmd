@@ -1,0 +1,1 @@
+dotnet tool install --tool-path tools dotnet-reportgenerator-globaltool
